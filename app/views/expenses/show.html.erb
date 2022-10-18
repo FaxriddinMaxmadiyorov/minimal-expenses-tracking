@@ -1,19 +1,7 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Category:</strong>
-  <%= @expense.category_id %>
-</p>
-
-<p>
-  <strong>Amount:</strong>
-  <%= @expense.amount %>
-</p>
-
-<p>
-  <strong>Description:</strong>
-  <%= @expense.description %>
-</p>
-
-<%= link_to 'Edit', edit_expense_path(@expense) %> |
-<%= link_to 'Back', expenses_path %>
+<div class="jumbotron">
+  <p class="display-6">Category: <%= @expense.category.name %></p>
+  <p class="display-6">Amount: <%= @expense.amount %></p>
+  <p class="display-6">Description: <%= @expense.description %></p>
+  <%= link_to 'Edit', edit_expense_path(@expense), class:"btn btn-secondary" %>
+  <%= link_to 'Back', expenses_path, class:"btn btn-secondary" %>
+</div>
