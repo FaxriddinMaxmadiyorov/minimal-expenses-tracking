@@ -18,14 +18,14 @@
         <td><%= expense.category.name %></td>
         <td><%= expense.amount %></td>
         <td><%= expense.description %></td>
-        <td><%= link_to 'Show', expense %></td>
-        <td><%= link_to 'Edit', edit_expense_path(expense) %></td>
-        <td><%= link_to 'Destroy', expense %></td>
+        <td><%= link_to 'Show', expense, class: 'btn btn-secondary' %></td>
+        <td><%= link_to 'Edit', edit_expense_path(expense), class: 'btn btn-secondary' %></td>
+        <td><%= link_to 'Destroy', expense, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-outline-danger btn-sm' %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
 <br>
 
-<%= link_to 'New', new_expense_path %>
+<%= link_to 'New', new_expense_path, class: 'btn btn-secondary' %>
 
