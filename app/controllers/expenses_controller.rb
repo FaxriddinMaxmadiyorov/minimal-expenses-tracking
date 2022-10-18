@@ -6,6 +6,7 @@ class ExpensesController < ApplicationController
   def index
     # byebug
     @expenses = Expense.where(user_id: current_user.id)
+    @sum = Expense.where(user_id: current_user.id).pluck(:amount).sum
   end
 
   # GET /expenses/1 or /expenses/1.json
@@ -27,7 +28,7 @@ class ExpensesController < ApplicationController
     @expense.user_id = current_user.id
 
     respond_to do |format|
-      byebug
+      # byebug
       if @expense.save
         format.html { redirect_to expense_url(@expense), notice: "Expense was successfully created." }
         format.json { render :show, status: :created, location: @expense }
