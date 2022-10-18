@@ -15,12 +15,12 @@
     <% @expenses.each do |expense| %>
       <tr>
         <td><%= expense.id %></td>
-        <td><%= expense.category_id %></td>
+        <td><%= expense.category.name %></td>
         <td><%= expense.amount %></td>
         <td><%= expense.description %></td>
-        <td><%= clink_to 'Show', expense, 'fa-search' %></td>
-        <td><%= clink_to 'Edit', edit_expense_path(expense), 'fa-edit' %></td>
-        <td><%= cdlink_to 'Destroy', expense %></td>
+        <td><%= link_to 'Show', expense %></td>
+        <td><%= link_to 'Edit', edit_expense_path(expense) %></td>
+        <td><%= link_to 'Destroy', expense %></td>
       </tr>
     <% end %>
   </tbody>
