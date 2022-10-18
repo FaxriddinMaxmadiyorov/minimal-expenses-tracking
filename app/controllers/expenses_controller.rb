@@ -4,6 +4,7 @@ class ExpensesController < ApplicationController
 
   # GET /expenses or /expenses.json
   def index
+    # byebug
     @expenses = Expense.where(user_id: current_user.id)
   end
 
