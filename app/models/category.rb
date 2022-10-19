@@ -1,3 +1,3 @@
 class Category < ApplicationRecord
-  belongs_to :expense
+  has_many :expenses, dependent: :destroy
 end

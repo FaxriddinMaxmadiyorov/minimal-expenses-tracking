@@ -230,6 +230,9 @@ GEM
       rexml (~> 3.2, >= 3.2.5)
       rubyzip (>= 1.2.2)
     semantic_range (3.0.0)
+    shoulda (2.11.3)
+    shoulda-matchers (5.2.0)
+      activesupport (>= 5.2.0)
     simple_form (5.1.0)
       actionpack (>= 5.2)
       activemodel (>= 5.2)
@@ -294,6 +297,8 @@ DEPENDENCIES
   rspec-rails
   sass-rails (>= 6)
   selenium-webdriver (>= 4.0.0.rc1)
+  shoulda
+  shoulda-matchers (~> 5.0)
   simple_form
   turbolinks (~> 5)
   tzinfo-data
