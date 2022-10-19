@@ -1,7 +1,6 @@
 class UsersController < ApplicationController
   def index
     @users = User.where(user_id: params[:id])
-    @sum = Expense.where(user_id: params[:id]).pluck(:amount).sum
   end
 
   # GET /users/1 or /users/1.json
@@ -10,6 +9,7 @@ class UsersController < ApplicationController
 
   def report
     @expenses = Expense.where(user_id: params[:id])
+    @sum = Expense.where(user_id: params[:id]).pluck(:amount).sum
   end
 
   private

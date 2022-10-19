@@ -5,8 +5,13 @@ class ExpensesController < ApplicationController
   # GET /expenses or /expenses.json
   def index
     # byebug
-    @expenses = Expense.where(user_id: current_user.id)
-    @sum = Expense.where(user_id: current_user.id).pluck(:amount).sum
+    # @q = Country.ransack(params[:q])
+    # @countries = @q.result.includes(:currency)
+    #                  .order(id: :asc).page(params[:page])
+
+    @q = Expense.where(user_id: current_user.id).ransack(params[:q])
+    @expenses = @q.result.order(id: :asc)
+    @sum = @q.result.pluck(:amount).sum
   end
 
   # GET /expenses/1 or /expenses/1.json

@@ -1,0 +1,13 @@
+<%= search_form_for @q, url: expenses_path do |f| %>
+
+  <%= f.label :amount_gt, 'greater than' %>
+  <%= f.number_field :amount_gt %>
+
+    <!-- Search if the top up number field contains -->
+  <%= f.label :top_up_number_cont, 'Category' %>
+  <%= f.select :category_id_eq, Category.all.pluck(:name, :id), include_blank: true %>
+
+  <%= f.submit %>
+  <%= link_to "Clear filter", expenses_path %>
+
+<% end %>

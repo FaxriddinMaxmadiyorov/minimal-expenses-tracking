@@ -1,6 +1,9 @@
 <h1>Expenses</h1>
-<%= link_to 'public data', report_user_path(current_user), class: 'btn btn-secondary' %><br>
+<%= link_to 'public data', report_user_path(current_user.id), class: 'btn btn-secondary' %><br>
 <br>
+
+<%= render 'filter_form' %>
+
 <table class="table table-striped table-hover">
   <thead>
     <tr>
