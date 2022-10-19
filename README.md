@@ -1,24 +1,17 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# Minimal Expenses Tracking App
+Users can track their expenses and share their data with others
 
-Things you may want to cover:
+# Overview
+This application uses Rails version 6.1.7, Ruby version 2.6.10
 
-* Ruby version
+# Local Setup
+* Install Ruby version 2.6.10: `rbenv install 2.6.10`
+* Bundle: `bundle install`
+* Run specs: `rspec spec`
+* Run server: `rails server`
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+# Database initialization
+* add your username and password into your database.yml
+* Run the command `rails db:setup`
