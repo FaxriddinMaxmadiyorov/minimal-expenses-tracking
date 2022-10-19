@@ -13,5 +13,5 @@ This application uses Rails version 6.1.7, Ruby version 2.6.10
 * Run server: `rails server`
 
 # Database initialization
-* add your username and password into your database.yml
-* Run the command `rails db:setup`
+* add your `username` and `password` into your `database.yml`
+* Run the command: `rails db:setup`
