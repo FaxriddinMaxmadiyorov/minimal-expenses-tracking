@@ -4,6 +4,7 @@
       <%= f.select :category_id, Category.all.pluck(:name, :id), include_blank: true %>
       <%= f.number_field :amount %>
       <%= f.text_area :description %>
+      <%= f.file_field :avatar %>
   </div>
 
   <div class="form-actions">
