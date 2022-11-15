@@ -2,7 +2,16 @@
   <p class="display-6">Category: <%= @expense.category.name %></p>
   <p class="display-6">Amount: <%= @expense.amount %></p>
   <p class="display-6">Description: <%= @expense.description %></p>
-  <p><%= image_tag @expense.avatar, width: "10%" if @expense.avatar.attached? %></p>
+  <% if @expense.avatar.attached? %>
+    <p>Avatar:</p>
+    <%= image_tag @expense.avatar, width: "10%" %>
+  <% end %>
+  <% if @expense.images.attached? %>
+    <p>Images:</p>
+    <% @expense.images.each do |image| %>
+      <%= image_tag image, width: "10%" %>
+    <% end %>
+  <% end %><br><br  >
   <%= link_to 'Edit', edit_expense_path(@expense), class:"btn btn-secondary" %>
   <%= link_to 'Back', expenses_path, class:"btn btn-secondary" %>
 </div>

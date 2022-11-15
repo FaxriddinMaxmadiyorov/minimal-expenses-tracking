@@ -7,4 +7,5 @@ class Expense < ApplicationRecord
   validates :description, presence: true, length: { minimum: 3 }
 
   has_one_attached :avatar
+  has_many_attached :images
 end

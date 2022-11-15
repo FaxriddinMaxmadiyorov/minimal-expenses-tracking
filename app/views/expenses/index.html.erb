@@ -8,6 +8,7 @@
   <thead>
     <tr>
       <th>ID</th>
+      <th>Avatar</th>
       <th>Category</th>
       <th>Amount</th>
       <th>Description</th>
@@ -19,6 +20,7 @@
     <% @expenses.each do |expense| %>
       <tr>
         <td><%= expense.id %></td>
+        <td><%= image_tag expense.avatar, width: "50px" if expense.avatar.attached? %></td>
         <td><%= expense.category.name %></td>
         <td><%= expense.amount %></td>
         <td><%= expense.description %></td>
