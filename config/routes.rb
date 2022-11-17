@@ -3,7 +3,13 @@ Rails.application.routes.draw do
   devise_for :user, path: '',
     path_names: { sign_in: 'login', sign_out: 'logout', sign_up: 'signup' }
 
-  resources :expenses
+  resources :expenses do
+    member do
+      get 'download', action: :download, as: :download
+      get 'preview', action: :preview, as: :preview
+    end
+  end
+  
   resources :users do
     member do
       get 'data', action: :report, as: :report
