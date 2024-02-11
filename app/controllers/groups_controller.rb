@@ -1,22 +1,17 @@
-class ExpensesController < ApplicationController
+class GroupsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_expense, only: %i[ show edit update destroy download ]
+  before_action :set_group, only: %i[ show edit update destroy download ]
   include Prawn::View
 
 
-  # GET /expenses or /expenses.json
+  # GET /groups or /groups.json
   def index
-    # byebug
-    # @q = Country.ransack(params[:q])
-    # @countries = @q.result.includes(:currency)
-    #                  .order(id: :asc).page(params[:page])
-
-    @q = Expense.where(user_id: current_user.id).ransack(params[:q])
-    @expenses = @q.result.order(id: :asc)
+    @q = group.where(user_id: current_user.id).ransack(params[:q])
+    @groups = @q.result.order(id: :asc)
     @sum = @q.result.pluck(:amount).sum
   end
 
-  # GET /expenses/1 or /expenses/1.json
+  # GET /groups/1 or /groups/1.json
   def show
     respond_to do |format|
       format.html
@@ -31,51 +26,51 @@ class ExpensesController < ApplicationController
 
   end
 
-  # GET /expenses/new
+  # GET /groups/new
   def new
-    @expense = Expense.new
+    @group = group.new
   end
 
-  # GET /expenses/1/edit
+  # GET /groups/1/edit
   def edit
   end
 
-  # POST /expenses or /expenses.json
+  # POST /groups or /groups.json
   def create
-    @expense = Expense.new(expense_params)
-    @expense.user_id = current_user.id
+    @group = group.new(group_params)
+    @group.user_id = current_user.id
 
     respond_to do |format|
       # byebug
-      if @expense.save
-        format.html { redirect_to expense_url(@expense), notice: "Expense was successfully created." }
-        format.json { render :show, status: :created, location: @expense }
+      if @group.save
+        format.html { redirect_to group_url(@group), notice: "group was successfully created." }
+        format.json { render :show, status: :created, location: @group }
       else
         format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @expense.errors, status: :unprocessable_entity }
+        format.json { render json: @group.errors, status: :unprocessable_entity }
       end
     end
   end
 
-  # PATCH/PUT /expenses/1 or /expenses/1.json
+  # PATCH/PUT /groups/1 or /groups/1.json
   def update
     respond_to do |format|
-      if @expense.update(expense_params)
-        format.html { redirect_to expense_url(@expense), notice: "Expense was successfully updated." }
-        format.json { render :show, status: :ok, location: @expense }
+      if @group.update(group_params)
+        format.html { redirect_to group_url(@group), notice: "group was successfully updated." }
+        format.json { render :show, status: :ok, location: @group }
       else
         format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @expense.errors, status: :unprocessable_entity }
+        format.json { render json: @group.errors, status: :unprocessable_entity }
       end
     end
   end
 
-  # DELETE /expenses/1 or /expenses/1.json
+  # DELETE /groups/1 or /groups/1.json
   def destroy
-    @expense.destroy
+    @group.destroy
 
     respond_to do |format|
-      format.html { redirect_to expenses_url, notice: "Expense was successfully destroyed." }
+      format.html { redirect_to groups_url, notice: "group was successfully destroyed." }
       format.json { head :no_content }
     end
   end
@@ -106,16 +101,16 @@ class ExpensesController < ApplicationController
     end
     pdf.stamp('stamp')
 
-    pdf.text "Category: #{@expense.category.name}"
-    pdf.text "Amount: #{@expense.amount}"
-    pdf.text "Description: #{@expense.description}"
+    pdf.text "Category: #{@group.category.name}"
+    pdf.text "Amount: #{@group.amount}"
+    pdf.text "Description: #{@group.description}"
     pdf.text "Avatar: "
-    avatar_image = StringIO.open(@expense.avatar.download)
+    avatar_image = StringIO.open(@group.avatar.download)
     pdf.image avatar_image, fit: [200, 200]
     pdf.text "Images: "
-    count = @expense.images.count
+    count = @group.images.count
     count.times do |i|
-      image = StringIO.open(@expense.images[i].download)
+      image = StringIO.open(@group.images[i].download)
       pdf.image image, fit: [200, 200]
     end
 
@@ -136,12 +131,12 @@ class ExpensesController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_expense
-      @expense = Expense.find(params[:id])
+    def set_group
+      @group = group.find(params[:id])
     end
 
     # Only allow a list of trusted parameters through.
-    def expense_params
-      params.require(:expense).permit(:user_id, :category_id, :amount, :description, :avatar, images: [])
+    def group_params
+      params.require(:group).permit(:user_id, :category_id, :amount, :description, :avatar, images: [])
     end
 end

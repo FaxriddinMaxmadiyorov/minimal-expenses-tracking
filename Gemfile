@@ -65,3 +65,8 @@ gem 'kaminari'
 gem 'faker'
 gem 'prawn'
 gem 'prawn-svg'
+gem 'figaro'
+
+gem 'omniauth'
+gem 'omniauth-google-oauth2'
+gem 'omniauth-rails_csrf_protection', "~> 1.0"

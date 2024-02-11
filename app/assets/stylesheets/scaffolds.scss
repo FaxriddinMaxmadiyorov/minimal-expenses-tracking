@@ -63,3 +63,46 @@ div.actions {
 
 label {
   display: block; }
+
+.form-inputs {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 390px;
+  margin: 30px auto 20px auto;
+
+  label {
+    display: none;
+  }
+  input.form-control {
+    line-height: 29px;
+    height: 50px;
+    font-size: 20px;
+    margin-bottom: 20px;
+
+    &.password {
+      margin-bottom: 0;
+    }
+  }
+    
+  .checkbox {
+    label {
+      display: block;
+      margin-right: auto;
+      position: relative;
+      color: #959595;
+      font-size: 18px;
+      padding-left: 26px;
+
+      input {
+        display: block;
+        margin-left: -26px;
+      }
+    }
+  }
+    
+  span.help-block {
+    color: #a94442;
+    font-size: 14px;
+  }
+}

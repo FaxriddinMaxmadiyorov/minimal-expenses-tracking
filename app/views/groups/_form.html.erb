@@ -1,4 +1,4 @@
-<%= bootstrap_form_for(@expense, :html => { class: 'form-horizontal' }) do |f| %>
+<%= bootstrap_form_for(@expense) do |f| %>
   <div class="form-inputs">
 
       <%= f.select :category_id, Category.all.pluck(:name, :id), include_blank: true %>
